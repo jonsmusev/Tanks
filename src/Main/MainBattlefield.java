@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
+//Класс реализующий игровое поле. 
 class MainBattlefield extends JPanel implements ActionListener {
 	
 	/**
@@ -49,17 +49,17 @@ class MainBattlefield extends JPanel implements ActionListener {
 	private void doDrawing (Graphics g){
 
 		Graphics2D g2d = (Graphics2D) g;
-		g2d.drawLine(10, 10, 50, 50);
+		g2d.drawLine(10, 10, 50, 50); //просто так
 		
-		ArrayList bullets = tank.getBullets();
+		ArrayList bullets = tank.getBullets(); //Пули существующие на поле.
 		for (Object b1 : bullets){
 			Bullet b = (Bullet)b1;
 			g2d.drawImage(b.getImage(), b.getX(), b.getY(), this);
 		} 
 		
-		g2d.drawImage(tank.getImage(), tank.getX(), tank.getY(), this);
-		g2d.setColor(Color.CYAN);
-		g2d.drawString(Integer.toString(bullets.size()), 30, 40);
+		g2d.drawImage(tank.getImage(), tank.getX(), tank.getY(), this); //Отрисовка танка
+		g2d.setColor(Color.CYAN); 
+		g2d.drawString(Integer.toString(bullets.size()), 30, 40); //счетчик пуль
 	}
 	
 	
@@ -69,6 +69,7 @@ class MainBattlefield extends JPanel implements ActionListener {
 		repaint();
 	}
 	
+	//класс для удаления из памяти ненужных пуль и перемещения нужных
 	private void updateBullets(){
 		ArrayList bullets = tank.getBullets();
 		for (int i = 0; i < bullets.size(); i++){

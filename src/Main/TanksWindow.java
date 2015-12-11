@@ -3,6 +3,7 @@ package Main;
 import java.awt.EventQueue;
 import javax.swing.JFrame;;
 
+//Главный класс, реализует обрамдающее окно и является точкой запуска
 public class TanksWindow extends JFrame {
 
 	/**
@@ -33,8 +34,7 @@ public class TanksWindow extends JFrame {
 			public void run() {
 				// TODO Auto-generated method stub
 				TanksWindow tv = new TanksWindow();
-				tv.setVisible(true);
-			}
+				tv.setVisible(true);}
 		});
 	}
 }

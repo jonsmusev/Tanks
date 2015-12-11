@@ -41,27 +41,32 @@ public class Tank {
 		bullets = new ArrayList();
 	}
 		
+	//реализация поворота подменой спрайта, проверка на край карты и движение изменением координаты
 	public void move() {
 		
 		switch (direction){
 			case WEST: if (isMoving==true){ 
 				image = image_WEST;
-				x -= 1; 
+				if (x <= 1 ){isMoving=false;} 
+				else x -= 1; 
 				break;
 				}
 			case EAST: if (isMoving==true){ 
 				image = image_EAST;
-				x += 1; 
+				if (x >= 620){isMoving=false;} 
+				else  x += 1; 
 				break;
 				}
 			case NORTH: if (isMoving==true){ 
 				image = image_NORTH;
-				y -= 1; 
+				if ( y <= 1 ){isMoving=false;} 
+				else y -= 1; 
 				break;
 				}
 			case SOUTH: if (isMoving==true){ 
 				image = image_SOUTH;
-				y += 1; 
+				if ( y >= 440 ){isMoving=false;} 
+				else y += 1; 
 				break;
 				}
 
@@ -84,6 +89,7 @@ public class Tank {
 		return bullets;
 	}
 	
+	//пули добавляем в список, а его обрабатывает уже поле.
 	public void shoot() {
 		bullets.add(new Bullet(x+5, y+5, direction));
 	}
@@ -95,10 +101,25 @@ public class Tank {
 		int key = e.getKeyCode();
 		
 		switch(key) {
-		case KeyEvent.VK_LEFT: { direction = WEST; isMoving=true; break;}
-		case KeyEvent.VK_RIGHT: {  direction = EAST; isMoving=true; break;}
-		case KeyEvent.VK_UP: { direction = NORTH; isMoving=true; break;}
-		case KeyEvent.VK_DOWN: {  direction = SOUTH; isMoving=true; break;}	
+		case KeyEvent.VK_LEFT: { 
+			direction = WEST; 
+			isMoving=true; 
+			break;
+			}
+		case KeyEvent.VK_RIGHT: {  
+			direction = EAST; 
+			isMoving=true; 
+			break;
+			}
+		case KeyEvent.VK_UP: { 
+			direction = NORTH; 
+			isMoving=true; 
+			break;
+			}
+		case KeyEvent.VK_DOWN: {  
+			direction = SOUTH; 
+			isMoving=true; 
+			break;}	
 		case KeyEvent.VK_SPACE: { shoot(); break;}
 		}
 	}
