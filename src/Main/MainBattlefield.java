@@ -22,6 +22,7 @@ class MainBattlefield extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private Timer timer;
 	private Tank tank;
+	private TankBot tankBot;
 	
 	MainBattlefield(){
 		initMainBattlefield();
@@ -34,6 +35,7 @@ class MainBattlefield extends JPanel implements ActionListener {
 		setBackground(Color.BLACK);
 		
 		tank = new Tank();
+		tankBot = new TankBot();
 		
 		timer = new Timer(10, this);
 		timer.start();
@@ -58,6 +60,7 @@ class MainBattlefield extends JPanel implements ActionListener {
 		} 
 		
 		g2d.drawImage(tank.getImage(), tank.getX(), tank.getY(), this); //Отрисовка танка
+		g2d.drawImage(tankBot.getImage(), tankBot.getX(), tankBot.getY(), this); //Отрисовка танка
 		g2d.setColor(Color.CYAN); 
 		g2d.drawString(Integer.toString(bullets.size()), 30, 40); //счетчик пуль
 	}
@@ -66,6 +69,7 @@ class MainBattlefield extends JPanel implements ActionListener {
 	public void actionPerformed (ActionEvent e){
 		updateBullets();
 		tank.move();
+		tankBot.move();
 		repaint();
 	}
 	
