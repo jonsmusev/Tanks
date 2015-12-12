@@ -43,24 +43,14 @@ public class Bullet {
 	}
 	
 	public void move(){
+		
 		switch (direction){
-		case WEST: { 
-			x -= 2; 
-			break;
-			}
-		case EAST: { 
-			x += 2; 
-			break;
-			}
-		case NORTH: { 
-			y -= 2; 
-			break;
-			}
-		case SOUTH: { 
-			y += 2; 
-			break;
-			}
+		case WEST: { x -= 2; break;	}
+		case EAST: { x += 2; break;	}
+		case NORTH: { y -= 2; break; }
+		case SOUTH: { y += 2; break; }
 		}
+		
 		if (x <= 0 || y <= 0 || x >= 640 || y >= 480 ){this.isAlive = false;} 
 	}
 	

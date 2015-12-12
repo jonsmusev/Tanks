@@ -19,11 +19,11 @@ public class TankBot {
 	private ArrayList bullets;
 	Random random;
 
-	public TankBot() {
-		initTankBot();
+	public TankBot(int dy) {
+		initTankBot(dy);
 	}
 	
-	private void initTankBot(){
+	private void initTankBot(int dy){
 		
 		ImageIcon tankSprite_NORTH = new ImageIcon("src/images/tank_NORTH.png");
 		ImageIcon tankSprite_SOUTH = new ImageIcon("src/images/tank_SOUTH.png");
@@ -35,15 +35,19 @@ public class TankBot {
 		image_WEST = tankSprite_WEST.getImage();
 		image_SOUTH = tankSprite_SOUTH.getImage();
 		image_EAST = tankSprite_EAST.getImage();
-		x=100;
-		y=200;
+		
+		this.dy = dy;
+        Random random = new Random(System.currentTimeMillis()*dy);
+		
+		x=random.nextInt(600);
+		y=random.nextInt(400);
 		
 		bullets = new ArrayList();
 	}
 	
 	public void move() {
 		
-        Random random = new Random(System.currentTimeMillis());
+        Random random = new Random(System.currentTimeMillis()*dy);
 
 		dx = random.nextInt(200);
 		if (dx>100 && dx <= 104 ){direction = dx-100;}
