@@ -57,14 +57,20 @@ class MainBattlefield extends JPanel implements ActionListener {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawLine(10, 10, 50, 50); //просто так
 		
+		g2d.drawImage(tank.getImage(), tank.getX(), tank.getY(), this); //Отрисовка танка
 		ArrayList bullets = tank.getBullets(); //Пули существующие на поле.
 		for (Object b1 : bullets){
 			Bullet b = (Bullet)b1;
 			g2d.drawImage(b.getImage(), b.getX(), b.getY(), this);
 		} 
 		
-		g2d.drawImage(tank.getImage(), tank.getX(), tank.getY(), this); //Отрисовка танка
-		g2d.drawImage(tankBot0.getImage(), tankBot0.getX(), tankBot0.getY(), this); //Отрисовка танка
+		g2d.drawImage(tankBot0.getImage(), tankBot0.getX(), tankBot0.getY(), this); 
+		ArrayList bullets0 = tankBot0.getBullets(); //Пули существующие на поле.
+		for (Object b1 : bullets0){
+			Bullet b = (Bullet)b1;
+			g2d.drawImage(b.getImage(), b.getX(), b.getY(), this);
+		}
+		
 		g2d.drawImage(tankBot1.getImage(), tankBot1.getX(), tankBot1.getY(), this); 
 		g2d.drawImage(tankBot2.getImage(), tankBot2.getX(), tankBot2.getY(), this); 
 		g2d.drawImage(tankBot3.getImage(), tankBot3.getX(), tankBot3.getY(), this); 
@@ -90,6 +96,12 @@ class MainBattlefield extends JPanel implements ActionListener {
 			Bullet b = (Bullet) bullets.get(i);
 			if (b.isAlive == true) {b.move();}
 			else {bullets.remove(i);}
+		} 
+		ArrayList bullets0 = tankBot0.getBullets();
+		for (int i = 0; i < bullets0.size(); i++){
+			Bullet b = (Bullet) bullets0.get(i);
+			if (b.isAlive == true) {b.move();}
+			else {bullets0.remove(i);}
 		} 
 	}
 	

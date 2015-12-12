@@ -7,10 +7,10 @@ import javax.swing.ImageIcon ;
 
 public class TankBot {
 
-	final int NORTH = 2;
-	final int EAST = 4;
-	final int SOUTH = 1;
-	final int WEST = 3;
+	final int NORTH = 1;
+	final int EAST = 2;
+	final int SOUTH = 3;
+	final int WEST = 4;
 	int direction;
 	public int x,y,dx,dy;
 	boolean isAlive, isMoving;
@@ -52,6 +52,7 @@ public class TankBot {
 		dx = random.nextInt(200);
 		if (dx>100 && dx <= 104 ){direction = dx-100;}
 		isMoving = true;
+		if (dx == 199){shoot();}
 		
 		switch (direction){
 			case WEST: if (isMoving==true){ 
