@@ -5,18 +5,9 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon ;
 
-public class TankBot {
+//Класс танка бота. Расшряет базовый класс Tank, реализует автоматическое управление;
+public class TankBot extends Tank{
 
-	final int NORTH = 1;
-	final int EAST = 2;
-	final int SOUTH = 3;
-	final int WEST = 4;
-	int direction;
-	public int x,y,dx,dy;
-	boolean isAlive, isMoving;
-	private Image image;
-	private Image image_NORTH, image_WEST, image_SOUTH, image_EAST;
-	private ArrayList bullets;
 	Random random;
 
 	public TankBot(int dy) {
@@ -80,30 +71,7 @@ public class TankBot {
 				break;
 				}
 		}
-	}
-	
-	public int getX() {
-		return x;
-	}
-	
-	public int getY() {
-		return y;
-	}
-	
-	public Image getImage() {
-		return image;
-	}
-	
-	public ArrayList getBullets(){
-		return bullets;
-	}
-	
-	//пули добавляем в список, а его обрабатывает уже поле.
-	public void shoot() {
-		bullets.add(new Bullet(x+5, y+5, direction));
-	}
-	
-	public void explode(){}
+	}	
 }
 
 
